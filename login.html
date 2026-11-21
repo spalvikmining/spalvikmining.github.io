@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in · Spalvik Mining</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<div class="top"><a class="brand" href="index.html"><img src="logo-mark.png" alt="Spalvik Mining logo"><span><b>SPALVIK</b><i>MINING</i></span></a></div>
+<main>
+  <div class="box">
+    <h1>Welcome back</h1>
+    <p class="sub">Log in to your Spalvik Mining account.</p>
+
+    <button class="btn btn-google" id="googleBtn" type="button">
+      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+      Continue with Google
+    </button>
+
+    <div class="or">or log in with email</div>
+
+    <form id="form">
+      <label for="email">Email</label>
+      <input id="email" type="email" required autocomplete="email" placeholder="you@example.com">
+      <label for="password">Password</label>
+      <input id="password" type="password" required autocomplete="current-password">
+      <div class="row"><button class="link" id="forgotBtn" type="button">Forgot password?</button></div>
+      <button class="btn btn-primary" id="submitBtn" type="submit">Log in</button>
+    </form>
+    <div class="msg" id="msg" aria-live="polite"></div>
+    <p class="foot">New to Spalvik? <a href="signup.html">Create an account</a></p>
+  </div>
+</main>
+
+<script type="module">
+import { auth, db, friendlyError } from "./firebase.js";
+import { signInWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup }
+  from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { doc, getDoc, setDoc, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+const msg = document.getElementById("msg");
+const show = (t, ok=false) => { msg.textContent = t; msg.className = "msg " + (ok ? "ok" : "err"); };
+
+document.getElementById("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById("submitBtn"); btn.disabled = true; show("Logging in…", true);
+  try {
+    await signInWithEmailAndPassword(auth, document.getElementById("email").value.trim(), document.getElementById("password").value);
+    location.href = "dashboard.html";
+  } catch (err) { show(friendlyError(err)); btn.disabled = false; }
+});
+
+document.getElementById("forgotBtn").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  if (!email) return show("Type your email above first, then click 'Forgot password?'.");
+  try { await sendPasswordResetEmail(auth, email); show("Password reset email sent. Check your inbox (and spam).", true); }
+  catch (err) { show(friendlyError(err)); }
+});
+
+document.getElementById("googleBtn").addEventListener("click", async () => {
+  try {
+    const { user } = await signInWithPopup(auth, new GoogleAuthProvider());
+    const ref = doc(db, "users", user.uid);
+    if (!(await getDoc(ref)).exists()) {
+      await setDoc(ref, { name: user.displayName || "", email: user.email, role: "user", createdAt: serverTimestamp() });
+    }
+    location.href = "dashboard.html";
+  } catch (err) { show(friendlyError(err)); }
+});
+</script>
+</body>
+</html>
