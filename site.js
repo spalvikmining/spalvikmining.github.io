@@ -14,6 +14,14 @@ if (sf) sf.addEventListener("submit", e => {
   location.href = "courses.html" + (q ? "?q=" + encodeURIComponent(q) : "");
 });
 
+// Big search box on the home page
+const hs = document.getElementById("heroSearch");
+if (hs) hs.addEventListener("submit", e => {
+  e.preventDefault();
+  const q = hs.querySelector("input").value.trim();
+  location.href = "courses.html" + (q ? "?q=" + encodeURIComponent(q) : "");
+});
+
 // Copy buttons
 document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
   const t = document.getElementById("toast");
