@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Spalvik Mining</title>
+<meta name="description" content="Contact Spalvik Mining for courses, advertising and partnerships.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Spalvik Mining home">
+      <img src="logo-mark.png" alt="Spalvik Mining logo">
+      <span class="brand-text"><b>SPALVIK</b><i>MINING</i></span>
+    </a>
+    <form class="search" id="searchForm" role="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search for mining courses" aria-label="Search courses">
+    </form>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav class="navlinks" id="navlinks">
+      <a class="nl" href="courses.html">Courses</a>
+      <a class="nl hide-md" href="advisory.html">Advisory</a>
+      <a class="nl hide-md" href="community.html">Community</a>
+      <a class="nl mob-only" href="about.html">About</a>
+      <a class="nl mob-only" href="contact.html">Contact</a>
+      <a class="nl" href="teach.html">Teach on Spalvik</a>
+      <div class="auth" id="authBtns"><a class="btn btn-outline btn-sm" href="login.html">Log in</a><a class="btn btn-copper btn-sm" href="signup.html">Sign up</a></div>
+    </nav>
+  </div>
+</header>
+<section class="page-head plain">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / Contact</div>
+    <h1>Contact us</h1>
+    <p>Course registration, advertising, partnerships or general questions — reach us here.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:760px">
+    <div class="contact-row">
+      <div><small>Email</small><strong>spalvikmining@gmail.com</strong></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-outline btn-sm" data-copy="spalvikmining@gmail.com">Copy</button>
+        <a class="btn btn-dark btn-sm" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=spalvikmining@gmail.com&amp;su=Enquiry%20from%20Spalvik%20website" target="_blank" rel="noopener">Send email</a>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div><small>Instagram</small><strong>@spalvik.mining</strong></div>
+      <a class="btn btn-dark btn-sm" href="https://www.instagram.com/spalvik.mining/" target="_blank" rel="noopener">Open Instagram</a>
+    </div>
+    <div class="toast" id="toast" aria-live="polite"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div class="fbrand">
+        <a class="brand" href="index.html"><img src="logo-mark.png" alt=""><span class="brand-text"><b>SPALVIK</b><i>MINING</i></span></a>
+        <p>Practical mining courses and software training, a community for mining people, and — soon — technical advisory.</p>
+      </div>
+      <div><h4>Learn</h4><a href="courses.html">All courses</a><a href="signup.html">Create account</a><a href="login.html">Log in</a></div>
+      <div><h4>Spalvik</h4><a href="about.html">About</a><a href="advisory.html">Advisory</a><a href="community.html">Community</a><a href="teach.html">Teach on Spalvik</a></div>
+      <div><h4>Contact</h4><a href="contact.html">Contact us</a><a href="https://www.instagram.com/spalvik.mining/" target="_blank" rel="noopener">Instagram</a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=spalvikmining@gmail.com" target="_blank" rel="noopener">spalvikmining@gmail.com</a></div>
+    </div>
+    <div class="legal">© <span id="yr"></span> Spalvik Mining. All rights reserved.</div>
+  </div>
+</footer>
+<script type="module" src="site.js"></script>
+
+</body>
+</html>
