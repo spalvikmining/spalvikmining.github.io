@@ -73,19 +73,17 @@
     <div id="applyBox"><p class="state">Loading…</p></div>
   </div>
 </section>
-
 <footer>
   <div class="wrap">
     <div class="fcols">
-      <div class="fbrand">
-        <a class="brand" href="index.html"><img src="logo-mark.png" alt=""><span class="brand-text"><b>SPALVIK</b><i>MINING</i></span></a>
-        <p>Practical mining courses and software training, a community for mining people, and — soon — technical advisory.</p>
-      </div>
       <div><h4>Learn</h4><a href="courses.html">All courses</a><a href="signup.html">Create account</a><a href="login.html">Log in</a></div>
       <div><h4>Spalvik</h4><a href="about.html">About</a><a href="advisory.html">Advisory</a><a href="community.html">Community</a><a href="teach.html">Teach on Spalvik</a></div>
       <div><h4>Contact</h4><a href="contact.html">Contact us</a><a href="https://www.instagram.com/spalvik.mining/" target="_blank" rel="noopener">Instagram</a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=spalvikmining@gmail.com" target="_blank" rel="noopener">spalvikmining@gmail.com</a></div>
     </div>
-    <div class="legal">© <span id="yr"></span> Spalvik Mining. All rights reserved.</div>
+    <div class="legal">
+      <a class="brand" href="index.html"><img src="logo-mark.png" alt=""><span class="brand-text"><b>SPALVIK</b><i>MINING</i></span></a>
+      <span>© <span id="yr"></span> Spalvik Mining. All rights reserved.</span>
+    </div>
   </div>
 </footer>
 <script type="module" src="site.js"></script>
@@ -111,16 +109,16 @@ onAuthStateChanged(auth, async user => {
   }
   box.innerHTML = `<form class="form-card" id="f">
     <div class="grid2">
-      <div><label>Full name</label><input id="name" required value="${esc(user.displayName || "")}"></div>
-      <div><label>Phone / WhatsApp</label><input id="phone" required placeholder="+233 ..."></div>
-      <div><label>Current role or title</label><input id="role" required placeholder="e.g. Mine Planning Engineer"></div>
-      <div><label>Company or institution</label><input id="org" placeholder="e.g. Gold Fields Tarkwa"></div>
-      <div><label>Years of experience</label><select id="years"><option>Less than 2</option><option>2–5</option><option>5–10</option><option>10+</option></select></div>
-      <div><label>LinkedIn or portfolio (optional)</label><input id="link" type="url" placeholder="https://"></div>
+      <div><label for="name">Full name</label><input id="name" required value="${esc(user.displayName || "")}"></div>
+      <div><label for="phone">Phone / WhatsApp (with country code)</label><input id="phone" type="tel" required></div>
+      <div><label for="role">Current role or title</label><input id="role" required></div>
+      <div><label for="org">Company or institution</label><input id="org"></div>
+      <div><label for="years">Years of experience</label><select id="years"><option>Less than 2</option><option>2–5</option><option>5–10</option><option>10+</option></select></div>
+      <div><label for="link">LinkedIn or portfolio (optional)</label><input id="link" type="url"></div>
     </div>
-    <label>Areas of expertise</label><input id="expertise" required placeholder="e.g. Pit optimisation, Surpac, Whittle">
-    <label>Course you'd like to teach</label><input id="topic" required placeholder="e.g. Open pit design in Surpac — from block model to final pit">
-    <label>Short bio</label><textarea id="bio" required placeholder="Your background and teaching or field experience"></textarea>
+    <label for="expertise">Areas of expertise</label><input id="expertise" required>
+    <label for="topic">Course you'd like to teach</label><input id="topic" required>
+    <label for="bio">Short bio</label><textarea id="bio" required placeholder="Your background and teaching or field experience"></textarea>
     <button class="btn btn-copper" style="margin-top:20px" id="sb">Submit application</button>
     <div class="msg" id="msg"></div>
   </form>`;
