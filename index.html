@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=5">
+<link rel="stylesheet" href="site.css?v=6">
 </head>
 <body>
 <header>
@@ -62,7 +62,20 @@
   <div class="wrap">
     <h2 class="h2">Browse by topic</h2>
     <p class="sub" style="margin-bottom:24px">Pick an area and see what's available.</p>
-    <div class="topics"><a class="topic" href="courses.html?q=Mine">Mine planning</a><a class="topic" href="courses.html?q=Drill">Drill &amp; blast</a><a class="topic" href="courses.html?q=Geostatistics">Geostatistics</a><a class="topic" href="courses.html?q=Mining">Mining software</a><a class="topic" href="courses.html?q=Haulage">Haulage &amp; fleet</a><a class="topic" href="courses.html?q=Mine">Mine safety</a><a class="topic" href="courses.html?q=Data">Data &amp; AI</a></div>
+    <div class="topics">
+      <a class="topic" href="courses.html?q=planning">Mine planning</a>
+      <a class="topic" href="courses.html?q=blast">Drill &amp; blast</a>
+      <a class="topic" href="courses.html?q=Geostatistics">Geostatistics</a>
+      <a class="topic" href="courses.html?q=software">Mining software</a>
+      <a class="topic" href="courses.html?q=Haulage">Haulage &amp; fleet</a>
+      <a class="topic" href="courses.html?q=safety">Mine safety</a>
+      <a class="topic" href="courses.html?q=Data">Data &amp; AI</a>
+      <button class="topic topic-other" id="otherBtn" type="button" aria-expanded="false" aria-controls="otherForm">Other</button>
+    </div>
+    <form class="other-search" id="otherForm" hidden>
+      <label for="otherInput">Search for any other mining topic</label>
+      <div class="other-row"><input id="otherInput" type="search" required><button class="btn btn-copper" type="submit">Search</button></div>
+    </form>
   </div>
 </section>
 

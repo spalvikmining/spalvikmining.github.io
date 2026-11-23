@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=5">
+<link rel="stylesheet" href="site.css?v=6">
 </head>
 <body>
 <header>
@@ -75,8 +75,8 @@ document.getElementById("form").addEventListener("submit", async e => {
   try {
     const { user } = await createUserWithEmailAndPassword(auth, email.value.trim(), password.value);
     await updateProfile(user, { displayName: nm }); await ensureProfile(user, nm);
-    sendEmailVerification(user).catch(() => {});
-    location.href = "dashboard.html";
+    await sendEmailVerification(user, { url: location.origin + "/dashboard.html" }).catch(() => {});
+    location.href = "verify.html";
   } catch (err) { show(friendlyError(err)); b.disabled = false; }
 });
 </script>

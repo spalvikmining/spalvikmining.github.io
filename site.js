@@ -22,6 +22,21 @@ if (hs) hs.addEventListener("submit", e => {
   location.href = "courses.html" + (q ? "?q=" + encodeURIComponent(q) : "");
 });
 
+// "Other" topic → opens a search box for any topic
+const otherBtn = document.getElementById("otherBtn"), otherForm = document.getElementById("otherForm");
+if (otherBtn && otherForm) {
+  otherBtn.addEventListener("click", () => {
+    const open = otherForm.hidden;
+    otherForm.hidden = !open; otherBtn.setAttribute("aria-expanded", String(open)); otherBtn.classList.toggle("on", open);
+    if (open) otherForm.querySelector("input").focus();
+  });
+  otherForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const q = otherForm.querySelector("input").value.trim();
+    if (q) location.href = "courses.html?q=" + encodeURIComponent(q);
+  });
+}
+
 // Copy buttons
 document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
   const t = document.getElementById("toast");

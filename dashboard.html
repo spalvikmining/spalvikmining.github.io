@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=5">
+<link rel="stylesheet" href="site.css?v=6">
 </head>
 <body>
 <header>
@@ -120,6 +120,7 @@ openTab(location.hash.slice(1));
 
 onAuthStateChanged(auth, async user => {
   if (!user) { location.href = "login.html"; return; }
+  if (!user.emailVerified) { location.href = "verify.html"; return; }
   let p = {};
   try { p = (await getDoc(doc(db, "users", user.uid))).data() || {}; } catch (e) {}
   const name = p.name || user.displayName || "";

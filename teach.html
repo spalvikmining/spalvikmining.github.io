@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=5">
+<link rel="stylesheet" href="site.css?v=6">
 </head>
 <body>
 <header>
@@ -99,6 +99,10 @@ onAuthStateChanged(auth, async user => {
   if (!user) {
     box.innerHTML = `<div class="notice">Log in or create a free account to apply.<div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
       <a class="btn btn-dark btn-sm" href="signup.html">Create account</a><a class="btn btn-outline btn-sm" href="login.html">Log in</a></div></div>`;
+    return;
+  }
+  if (!user.emailVerified) {
+    box.innerHTML = `<div class="notice">Please verify your email address before applying.<div style="margin-top:14px"><a class="btn btn-dark btn-sm" href="verify.html">Verify my email</a></div></div>`;
     return;
   }
   const ref = doc(db, "tutorApplications", user.uid);

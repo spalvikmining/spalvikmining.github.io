@@ -299,3 +299,18 @@ footer .legal .brand-text b{color:#fff;font-size:1rem}
   .community-strip{padding:24px}
   .community-strip .btn{width:100%}
 }
+
+/* "Other" topic + its search box */
+.topic-other{font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;color:var(--copper);border-style:dashed;border-color:var(--copper);background:#fff}
+.topic-other.on{background:var(--copper);color:#fff;border-style:solid}
+.other-search{margin-top:18px;max-width:560px}
+.other-search label{display:block;font-weight:700;font-size:.9rem;margin-bottom:8px}
+.other-row{display:flex;gap:8px}
+.other-row input{flex:1;min-width:0;height:46px;border:1px solid var(--ink);padding:0 14px;font:inherit;background:#fff}
+@media(max-width:600px){.topic-other.on::after{color:#fff}}
+
+/* Verify email page */
+.verify-icon{width:56px;height:56px;border-radius:50%;background:var(--copper-l);color:var(--copper);display:grid;place-items:center;margin-bottom:18px}
+.auth-form .btn-outline{width:100%;height:50px}
+.auth-form .hint{color:var(--muted);font-size:.85rem;margin-top:18px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
