@@ -262,3 +262,10 @@ footer .legal .brand-text b{color:#fff;font-size:1rem}
 .forgot{text-align:right;margin-top:8px;font-size:.88rem}
 @media(max-width:860px){.auth-page{grid-template-columns:1fr}.auth-art{display:none}}
 @media(max-width:600px){.dtabs{gap:20px}.dtab{font-size:.92rem}.hero-search button{padding:0 16px}}
+/* Browse by topic: neat 2-column tiles on phones */
+@media(max-width:600px){
+  .topics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .topic{border-radius:8px;padding:14px 14px;font-size:.88rem;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .topic::after{content:"→";color:var(--copper);font-weight:700}
+  .topic:last-child:nth-child(odd){grid-column:1 / -1}
+}
