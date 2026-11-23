@@ -285,3 +285,17 @@ footer .legal .brand-text b{color:#fff;font-size:1rem}
   .topics-sec::after{display:none}
 }
 @media(max-width:600px){.topics-sec{min-height:0;display:block}}
+
+/* Compact community call-to-action (home page) */
+.community-strip{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border:1px solid var(--line);border-left:4px solid var(--copper);background:var(--soft);padding:32px}
+.community-strip h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:6px}
+.community-strip p{color:var(--muted);max-width:560px}
+
+/* Shorter pages on phones */
+@media(max-width:600px){
+  .section{padding:44px 0}
+  .split img{aspect-ratio:16/10}
+  .band .wrap{padding-top:56px;padding-bottom:56px}
+  .community-strip{padding:24px}
+  .community-strip .btn{width:100%}
+}
