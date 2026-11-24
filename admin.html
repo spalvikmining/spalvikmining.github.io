@@ -7,7 +7,7 @@
 <title>Admin · Spalvik Mining</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="auth.css?v=4">
+<link rel="stylesheet" href="auth.css?v=7">
 <style>
   body{display:block}
   .top{justify-content:space-between;position:sticky;top:0;z-index:10}
@@ -77,6 +77,24 @@
   .inline{display:flex;gap:10px;flex-wrap:wrap}
   .inline input{flex:1;min-width:200px}
   .inline .btn{width:auto;margin-top:0;padding:11px 20px}
+  @media(max-width:600px){
+    .top{padding:0 14px}
+    .top .right{gap:8px}
+    .pill{display:none}
+    .top .small-btn{padding:7px 12px;font-size:.8rem}
+    .brand b{font-size:1rem}
+    .brand img{height:34px}
+    .layout{padding:20px 14px 48px}
+    .tabs{scrollbar-width:none;margin-left:-14px;margin-right:-14px;padding:0 14px}
+    .tabs::-webkit-scrollbar{display:none}
+    .stats{grid-template-columns:1fr 1fr;gap:10px}
+    .stat{padding:16px}.stat b{font-size:1.7rem}
+    .card{padding:16px}
+    .item,.lesson{flex-wrap:wrap}
+    .lbtns{justify-content:flex-start;width:100%}
+    .actions .btn{width:100%}
+  }
+  @media(max-width:400px){.top a[href="dashboard.html"]{display:none}}
   #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none}
   #toast.show{opacity:1}
 </style>

@@ -314,3 +314,123 @@ footer .legal .brand-text b{color:#fff;font-size:1rem}
 .auth-form .btn-outline{width:100%;height:50px}
 .auth-form .hint{color:var(--muted);font-size:.85rem;margin-top:18px}
 .btn:disabled{opacity:.55;cursor:not-allowed}
+
+/* =====================================================================
+   RESPONSIVE REFINEMENTS — phones (≤600), tablets (601–1023), large (≥1600)
+   ===================================================================== */
+
+/* Fluid side padding: tighter on small phones, roomier on big screens */
+.wrap{padding-left:clamp(16px,4vw,32px);padding-right:clamp(16px,4vw,32px)}
+
+/* Images never overflow their box */
+img,svg,video,iframe{max-width:100%}
+
+/* ---- Header: show the search on tablets too ---- */
+@media(min-width:601px) and (max-width:860px){
+  .search{display:flex;max-width:none}
+  .nav{gap:14px}
+}
+
+/* ---- Hero ---- */
+@media(min-width:601px) and (max-width:1023px){
+  .hero{min-height:500px}
+  .hero-text{max-width:560px}
+}
+@media(max-width:600px){
+  .hero .wrap{padding-top:44px;padding-bottom:40px}
+  .hero h1{font-size:clamp(1.9rem,8.5vw,2.4rem)}
+  .hero p.lead{font-size:1rem;margin-bottom:22px}
+  .hero-search{height:50px}
+  .hero .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .hero .btns .btn{padding:0 10px;font-size:.88rem}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px;padding-top:18px}
+  .hero-stats b{font-size:.82rem;line-height:1.25}
+  .hero-stats span{display:none}
+}
+
+/* ---- Browse by topic: ore model never covers the buttons ---- */
+@media(min-width:601px) and (max-width:1023px){
+  .topics-sec{min-height:0;display:block}
+  .topics-sec::before{width:60%;opacity:.25}
+  .topics-sec::after{display:none}
+  .topics-sec .topic{background:rgba(255,255,255,.95)}
+}
+@media(max-width:360px){
+  .topic{padding:12px 10px;font-size:.8rem}
+  .topic::after{display:none}
+}
+@media(min-width:601px) and (max-width:1023px){
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+}
+
+/* ---- Course grid: 2 per row on phones & small tablets, 3 on tablets, 4 on desktop ---- */
+@media(min-width:601px) and (max-width:860px){.course-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:861px) and (max-width:1100px){.course-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:380px){.course-grid{grid-template-columns:1fr}}
+
+/* ---- Image + text sections: sensible photo height once stacked ---- */
+@media(max-width:860px){
+  .split img{aspect-ratio:16/9;max-height:360px}
+  .split h2{font-size:clamp(1.4rem,5vw,1.9rem)}
+}
+
+/* ---- Inner page headers ---- */
+@media(max-width:600px){
+  .page-head .wrap{padding-top:36px;padding-bottom:36px}
+  .page-head p{font-size:.98rem}
+}
+
+/* ---- Three-column feature rows: 2 columns on tablets ---- */
+@media(min-width:601px) and (max-width:860px){
+  .cols3{grid-template-columns:1fr 1fr}
+  .cols3 > :last-child:nth-child(odd){grid-column:1 / -1}
+}
+
+/* ---- Courses page bar ---- */
+@media(max-width:600px){
+  .cat-bar{flex-direction:column;align-items:stretch}
+  .cat-search{min-width:0;max-width:none}
+  .cat-bar > div{display:grid !important;grid-template-columns:auto 1fr}
+  select.sort{width:100%}
+}
+
+/* ---- Dashboard ---- */
+@media(max-width:600px){
+  .dash-head .wrap{padding-top:28px}
+  .dash-hello{gap:14px;margin-bottom:20px}
+  .avatar.lg{width:56px;height:56px;font-size:1.1rem}
+  .dtabs{gap:18px;scrollbar-width:none}
+  .dtabs::-webkit-scrollbar{display:none}
+  .settings .row{flex-direction:column;align-items:flex-start}
+  .inline-form{width:100%}
+  .inline-form input{min-width:0;flex:1}
+}
+
+/* ---- Forms: full-width buttons on phones ---- */
+@media(max-width:600px){
+  .form-card{padding:20px}
+  .form-card .btn{width:100%}
+  .contact-row{flex-direction:column;align-items:flex-start}
+  .contact-row > div:last-child{width:100%}
+  .contact-row .btn{flex:1}
+}
+
+/* ---- Log in / Sign up: show a slim photo strip on tablets ---- */
+@media(min-width:601px) and (max-width:860px){
+  .auth-page{grid-template-columns:1fr}
+  .auth-art{display:block;min-height:220px}
+}
+
+/* ---- Large screens: use the space without stretching lines too wide ---- */
+@media(min-width:1600px){
+  :root{--max:1360px}
+  body{font-size:17px}
+  .hero{min-height:640px}
+  .course-grid{grid-template-columns:repeat(4,1fr)}
+}
+
+/* ---- Touch devices: no sticky hover effects, comfortable tap targets ---- */
+@media(hover:none){
+  .ccard:hover .thumb{filter:none}
+  .navlinks a.nl,.acct-menu a,.acct-menu button{min-height:44px;display:flex;align-items:center}
+}
